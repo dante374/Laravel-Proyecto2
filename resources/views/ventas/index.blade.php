@@ -22,7 +22,7 @@
     </form>
 
     @if($ventas->isEmpty())
-        <p>No hay ventas registradas.</p>
+        <p>No hay venta registrada.</p>
     @else
         <table border="1" cellpadding="5" cellspacing="0"  class="tabla-style table table-bordered table-striped table-hover">
             <thead>
