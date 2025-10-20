@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <h2 style="font-family:Anton, sans-serif">Ventas</h2>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
