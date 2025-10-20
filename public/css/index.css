@@ -1,0 +1,24 @@
+body{
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.buscador button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.tabla-style {
+    background-color: rgba(255,255,255,0.9); /* ligera transparencia */
+}
+
+.tabla-style th {
+    cursor:progress;
+    background-color: #007bff;
+    color: white;
+}
