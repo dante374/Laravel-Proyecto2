@@ -22,7 +22,7 @@ class VentaRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion' => 'required|alpha|max:100',
+            'descripcion' => 'required|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$/u|max:100',
             'cant_articulos' => 'required|integer|min:1',
             'precio' => 'required|numeric|min:1',
             'fecha_venta' => 'required|date|before_or_equal:today',
@@ -33,7 +33,7 @@ class VentaRequest extends FormRequest
     {
         return [
             'descripcion.required' => 'La descripción es obligatoria.',
-            'descripcion.alpha' => 'La descripción debe ser un texto.',
+            'descripcion.regex' => 'La descripción debe ser un texto.',
             'descripcion.max' => 'La descripción no puede superar los 100 caracteres.',
 
             'cant_articulos.required' => 'Debe ingresar la cantidad de artículos.',

@@ -9,26 +9,38 @@
     @yield('css')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Sistema de Ventas</a>
-            <div>
-                <ul class="navbar-nav me-auto">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">Sistema de Ventas</a>
+        <div>
+            <ul class="navbar-nav me-auto">
+                @auth
+                    <!-- Enlaces solo visibles si el usuario está logueado -->
                     <li class="nav-item"><a class="nav-link" href="{{ route('vendedores.index') }}">Vendedores</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('ventas.index') }}">Ventas</a></li>
-                </ul>
-            </div>
+
+                    <li class="nav-item">
+                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-link nav-link mt-2" style="padding:0;">
+                            Cerrar sesión
+                        </button>
+                     </form>
+                    </li>
+                @endauth
+            </ul>
         </div>
-    </nav>
-
-    <div class="container">
-        {{-- Contenido específico de cada vista --}}
-        @yield('content')
     </div>
+</nav>
 
-    <footer class="text-center mt-5 mb-3 text-muted">
-        <hr>
-        <small>© {{ date('Y') }} Sistema de Ventas - Proyecto Laravel</small>
-    </footer>
+
+<div class="container">
+    @yield('content')
+</div>
+
+<footer class="text-center mt-5 mb-3 text-muted">
+    <hr>
+    <small>© {{ date('Y') }} Sistema de Ventas - Proyecto Laravel</small>
+</footer>
 </body>
 </html>

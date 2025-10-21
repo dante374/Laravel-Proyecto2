@@ -50,13 +50,22 @@
                         <td>
                             <a href="{{ route('ventas.show', $v) }}" class="btn btn-primary">Ver</a>
                             <a href="{{ route('ventas.edit', $v) }}" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('ventas.destroy', $v) }}" method="POST" style="display:inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Eliminar esta venta?')" class="btn btn-danger">
-                                    Eliminar
-                                </button>
-                            </form>
+                            @if(request('delete') == $v->id)
+                            <div class="alert alert-danger mt-2 p-2">
+                                <strong>¿Seguro que querés eliminar esta venta?</strong>
+                                <div class="mt-2">
+                                    <form action="{{ route('ventas.destroy', $v) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Confirmar</button>
+                                    </form>
+                                    <a href="{{ route('ventas.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('ventas.index', ['delete' => $v->id]) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                        @endif
+                    </td>
                         </td>
                     </tr>
                 @endforeach

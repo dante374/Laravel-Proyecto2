@@ -16,17 +16,19 @@
         </ul>
     @endif
 
-    <form method="POST" action="{{ route('login.perform') }}" class="form-contenido">
+    <form method="POST" action="{{ route('login.perform') }}" class="form-contenido" autocomplete="off">
         @csrf
         <h2>Iniciar sesión</h2>
 
         <input type="email" name="email" placeholder="Email"
-               value="{{ old('email') }}" class="form-control mb-2">
+               value="{{ old('email') }}" class="form-control mb-2" autocomplete="new-email">
 
         <input type="password" name="password" placeholder="Contraseña"
-               class="form-control mb-3">
+               class="form-control mb-3" autocomplete="new-password">
 
         <button type="submit">Ingresar</button>
+        <p>¿No tenes una cuenta?</p>
+        <a href="{{ route('registro.show') }}" class="btn btn-success">Registrarse</a>
     </form>
 </div>
 @endsection

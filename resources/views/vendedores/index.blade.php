@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<h2>Vendedores</h2>
+<h2 style="font-family:Anton, sans-serif">Vendedores</h2>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     {{-- Mensajes --}}
     @if(session('success'))
         <p style="color: green; font-weight: bold;">{{ session('success') }}</p>
@@ -52,11 +55,22 @@
                         <td>
                             <a href="{{ route('vendedores.show', $v) }}" class="btn btn-primary">Ver</a>
                             <a href="{{ route('vendedores.edit', $v) }}" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('vendedores.destroy', $v) }}" method="POST" style="display:inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
+                            @if(request('delete') == $v->id)
+                            <div class="alert alert-danger mt-2 p-2">
+                                <strong>¿Seguro que querés eliminar este vendedor?</strong>
+                                <div class="mt-2">
+                                    <form action="{{ route('vendedores.destroy', $v) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Confirmar</button>
+                                    </form>
+                                    <a href="{{ route('vendedores.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('vendedores.index', ['delete' => $v->id]) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                        @endif
+                    </td>
                         </td>
                     </tr>
                 @endforeach
