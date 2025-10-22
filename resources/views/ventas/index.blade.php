@@ -32,7 +32,7 @@
                      <th>
                          <a href="{{route('ventas.index', ['order' => $order === 'asc' ? 'desc' : 'asc',
                          'search' => request('search')])}}" class="text-white text-decoration-none">
-                         Precio {!! $order === 'asc'?'↑':'↓'!!}
+                         Precio <span id="span">{!! $order === 'asc'?'↑':'↓'!!}</span>
                         </a>
                     </th>
                     <th>Fecha de venta</th>

@@ -29,7 +29,6 @@ class LoginController extends Controller
             return redirect()->route('vendedores.index')->with('success', 'Bienvenido!');
         }
 
-        // Marcamos que hubo un fallo para regenerar la sesión en show()
         $request->session()->put('login_failed', true);
 
         return redirect()->route('login.show')

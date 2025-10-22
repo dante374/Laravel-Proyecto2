@@ -31,7 +31,7 @@
                     <th>
                          <a href="{{route('vendedores.index', ['order' => $order === 'asc' ? 'desc' : 'asc',
                          'search' => request('search')])}}" class="text-white text-decoration-none">
-                         Nombre <span style="font-size: 15px;">{!! $order === 'asc'?'↑':'↓'!!}</span>
+                         Nombre <span id="span">{!! $order === 'asc'?'↑':'↓'!!}</span>
                         </a>
                     </th>
                     <th>Apellido</th>
