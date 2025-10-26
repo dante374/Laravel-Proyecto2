@@ -25,9 +25,9 @@ class VendedorRequest extends FormRequest
         'nombre' => 'required|alpha|max:20',
         'apellido' => 'required|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$/u|max:40',
         'email' => 'required|email|unique:vendedor,email,' . $this->vendedor?->id,
-        'telefono' => 'required|string|max:20',
+        'telefono' => 'required|regex:/^[0-9\s\-\+]+$/|max:20',
         'direccion' => 'required|string|max:255',
-        'fecha_nacimiento' => 'required|date', // obligatorio y tipo fecha
+        'fecha_nacimiento' => 'required|date', 
     ];
 }
 
@@ -45,6 +45,7 @@ public function messages(): array
         'email.unique' => 'El email ya existe.',
         'telefono.required' => 'El teléfono es obligatorio.',
         'telefono.max' => 'La cantidad de caracteres de telefono no debe superar los 20',
+        'telefono.regex' => 'Sin letras el numero de telefono',
         'direccion.required' => 'La dirección es obligatoria.',
         'fecha_nacimiento.required' => 'La fecha de nacimiento es obligatoria.',
         'fecha_nacimiento.date' => 'La fecha de nacimiento debe ser una fecha válida.',

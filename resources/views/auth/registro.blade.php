@@ -32,7 +32,8 @@
         <input type="password" name="password_confirmation" placeholder="Confirmar contraseña"
                class="form-control mb-3">
 
-        <button type="submit">Registrarse</button>
+        <button type="submit" class="mb-2">Registrarse</button>
+        <a href="{{ route('login.show') }}" class="btn btn-success" style="width:50%;">Login</a>
     </form>
 </div>
 @endsection

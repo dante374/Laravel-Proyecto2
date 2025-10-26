@@ -24,7 +24,8 @@
     @if($vendedores->isEmpty())
         <p>No hay vendedores registrados.</p>
     @else
-        <table class="tabla-style table table-bordered table-striped table-hover">
+      <div class="table-responsive">
+        <table class="tabla-style table  table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -53,8 +54,8 @@
                         <td>{{ $v->direccion }}</td>
                         <td>{{ $v->fecha_nacimiento }}</td>
                         <td>
-                            <a href="{{ route('vendedores.show', $v) }}" class="btn btn-primary">Ver</a>
-                            <a href="{{ route('vendedores.edit', $v) }}" class="btn btn-warning">Editar</a>
+                            <a href="{{ route('vendedores.show', $v) }}" class="btn btn-primary btn-sm mb-1">Ver</a>
+                            <a href="{{ route('vendedores.edit', $v) }}" class="btn btn-warning btn-sm mb-1">Editar</a>
                             @if(request('delete') == $v->id)
                             <div class="alert alert-danger mt-2 p-2">
                                 <strong>¿Seguro que querés eliminar este vendedor?</strong>
@@ -62,13 +63,13 @@
                                     <form action="{{ route('vendedores.destroy', $v) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Confirmar</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mb-1">Confirmar</button>
                                     </form>
-                                    <a href="{{ route('vendedores.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
+                                    <a href="{{ route('vendedores.index') }}" class="btn btn-secondary btn-sm mb-1">Cancelar</a>
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('vendedores.index', ['delete' => $v->id]) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="{{ route('vendedores.index', ['delete' => $v->id]) }}" class="btn btn-danger btn-sm mb-1">Eliminar</a>
                         @endif
                     </td>
                         </td>
@@ -76,9 +77,10 @@
                 @endforeach
             </tbody>
         </table>
+       </div>
     @endif
 
     {{-- Botón siempre visible --}}
-    <a href="{{ route('vendedores.create') }}" class="btn btn-success">Nuevo vendedor</a>
+    <a href="{{ route('vendedores.create') }}" class="btn btn-success ">Nuevo vendedor</a>
 @endsection
 

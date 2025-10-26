@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Ventas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- CSS global -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
     @yield('css')
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar w-100 navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">Sistema de Ventas</a>
+        <a class="navbar-brand" style="cursor:progress;">Sistema de Ventas</a>
         <div>
             <ul class="navbar-nav me-auto">
                 @auth
-                    <!-- Enlaces solo visibles si el usuario está logueado -->
                     <li class="nav-item"><a class="nav-link" href="{{ route('vendedores.index') }}">Vendedores</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('ventas.index') }}">Ventas</a></li>
 

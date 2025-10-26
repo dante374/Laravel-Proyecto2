@@ -23,7 +23,8 @@
     @if($ventas->isEmpty())
         <p>No hay venta registrada.</p>
     @else
-        <table border="1" cellpadding="5" cellspacing="0"  class="tabla-style table table-bordered table-striped table-hover">
+      <div class="table-responsive">
+        <table border="1" cellpadding="5" cellspacing="0"  class="tabla-style table  table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -48,8 +49,8 @@
                         <td>{{ $v->precio }}</td>
                         <td>{{ $v->fecha_venta }}</td>
                         <td>
-                            <a href="{{ route('ventas.show', $v) }}" class="btn btn-primary">Ver</a>
-                            <a href="{{ route('ventas.edit', $v) }}" class="btn btn-warning">Editar</a>
+                            <a href="{{ route('ventas.show', $v) }}" class="btn btn-primary btn-sm mb-1">Ver</a>
+                            <a href="{{ route('ventas.edit', $v) }}" class="btn btn-warning btn-sm mb-1">Editar</a>
                             @if(request('delete') == $v->id)
                             <div class="alert alert-danger mt-2 p-2">
                                 <strong>¿Seguro que querés eliminar esta venta?</strong>
@@ -57,7 +58,7 @@
                                     <form action="{{ route('ventas.destroy', $v) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Confirmar</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mb-1">Confirmar</button>
                                     </form>
                                     <a href="{{ route('ventas.index') }}" class="btn btn-secondary btn-sm">Cancelar</a>
                                 </div>
@@ -71,6 +72,7 @@
                 @endforeach
             </tbody>
         </table>
+       </div>
     @endif
 
     {{-- Botón siempre visible --}}

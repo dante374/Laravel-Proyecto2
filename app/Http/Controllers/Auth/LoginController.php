@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function show(Request $request)
     {
-        // Regeneramos la sesión si venimos de un intento fallido
+
         if ($request->session()->has('login_failed')) {
             $request->session()->regenerate();
             $request->session()->forget('login_failed');
