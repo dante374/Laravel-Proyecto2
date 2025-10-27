@@ -25,7 +25,6 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
             return redirect()->route('vendedores.index')->with('success', 'Bienvenido!');
         }
 
@@ -40,7 +39,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
         return redirect()->route('login.show')->with('success', 'Sesión cerrada correctamente');
     }
