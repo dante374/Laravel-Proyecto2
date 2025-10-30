@@ -16,7 +16,7 @@
         </ul>
     @endif
 
-    <form method="POST" action="{{ route('login.perform') }}" class="form-contenido" autocomplete="off">
+    <form method="POST" action="{{ route('login.ejecutar') }}" class="form-contenido" autocomplete="off">
         @csrf
         <h2>Iniciar sesión</h2>
 

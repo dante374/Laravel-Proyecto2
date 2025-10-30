@@ -15,7 +15,7 @@ Route::post('/registro', [RegistroController::class, 'store'])->name('registro.s
 
 // Login
 Route::get('/login', [LoginController::class, 'show'])->name('login.show');
-Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
+Route::post('/login', [LoginController::class, 'login'])->name('login.ejecutar');
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

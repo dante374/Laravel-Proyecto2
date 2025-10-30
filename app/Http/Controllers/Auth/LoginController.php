@@ -12,9 +12,9 @@ class LoginController extends Controller
     public function show(Request $request)
     {
 
-        if ($request->session()->has('login_failed')) {
+        if ($request->session()->has('login_fallido')) {
             $request->session()->regenerate();
-            $request->session()->forget('login_failed');
+            $request->session()->forget('login_fallido');
         }
 
         return view('auth.login');
@@ -28,7 +28,7 @@ class LoginController extends Controller
             return redirect()->route('vendedores.index')->with('success', 'Bienvenido!');
         }
 
-        $request->session()->put('login_failed', true);
+        $request->session()->put('login_fallido', true);
 
         return redirect()->route('login.show')
             ->withErrors(['email' => 'Las credenciales no coinciden'])
@@ -40,6 +40,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
 
-        return redirect()->route('login.show')->with('success', 'Sesión cerrada correctamente');
+        return redirect()->route('login.show')->with('success', 'Sesion cerrada correctamente');
     }
 }
