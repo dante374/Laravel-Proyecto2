@@ -23,7 +23,7 @@ class RegistroRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nombre.required' => 'El nombre es obligatorio',
+            'name.required' => 'El nombre es obligatorio',
             'email.required' => 'El email es obligatorio',
             'email.unique' => 'Este email ya está registrado',
             'password.required' => 'La contraseña es obligatoria',
